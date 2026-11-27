@@ -42,25 +42,36 @@ try {
 
   const ownerForm = await request('/owners/new');
   check(ownerForm.response.status === 200 && ownerForm.body.includes('name="firstName"'), 'Form chủ nuôi không mở được');
-  const ownerPost = await post('/owners/new', {
+  let stepStarted = performance.now();
+  const ownerInput = {
     firstName: 'An', lastName, address: '12 Tran Phu', city: 'Da Lat', telephone: '0123456789',
-  });
+  };
+  const ownerPost = await post('/owners/new', ownerInput);
   const ownerLocation = redirectPath(ownerPost.response);
   check(ownerPost.response.status === 302 && /^\/owners\/\d+$/.test(ownerLocation), `Thêm chủ nuôi thất bại: ${ownerPost.response.status} ${ownerLocation}`);
   const ownerId = Number(ownerLocation.match(/\d+$/)[0]);
   const ownerPage = await request(ownerLocation);
   check(ownerPage.response.status === 200 && ownerPage.body.includes(lastName), 'Không thấy chủ nuôi vừa tạo');
   await save('02_chu_nuoi.html', ownerPage.body);
-  result.cases.push({ flow: 'Thêm chủ nuôi', status: 'PASS', ownerId, path: ownerLocation, evidence: '02_chu_nuoi.html' });
+  result.cases.push({ flow: 'Thêm chủ nuôi', status: 'PASS', ownerId, path: ownerLocation,
+    input: ownerInput, expected: { httpStatus: 302, persisted: true },
+    actual: { httpStatus: ownerPost.response.status, location: ownerLocation, persisted: true },
+    durationMs: Math.round(performance.now() - stepStarted), evidence: '02_chu_nuoi.html' });
 
+  stepStarted = performance.now();
   const find = await request(`/owners?lastName=${encodeURIComponent(lastName)}`);
   check(find.response.status === 302 && redirectPath(find.response) === ownerLocation, 'Tìm chủ nuôi không trả về đúng hồ sơ');
-  result.cases.push({ flow: 'Tìm chủ nuôi', status: 'PASS', query: lastName, ownerId });
+  result.cases.push({ flow: 'Tìm chủ nuôi', status: 'PASS', query: lastName, ownerId,
+    input: { lastName }, expected: { httpStatus: 302, location: ownerLocation },
+    actual: { httpStatus: find.response.status, location: redirectPath(find.response) },
+    durationMs: Math.round(performance.now() - stepStarted) });
 
   const petRoute = `/owners/${ownerId}/pets/new`;
   const petForm = await request(petRoute);
   check(petForm.response.status === 200 && petForm.body.includes('value="cat"'), 'Form thú nuôi không mở được');
-  const petPost = await post(petRoute, { name: petName, birthDate, type: 'cat' });
+  stepStarted = performance.now();
+  const petInput = { name: petName, birthDate, type: 'cat' };
+  const petPost = await post(petRoute, petInput);
   check(petPost.response.status === 302 && redirectPath(petPost.response) === ownerLocation, `Thêm thú nuôi thất bại: ${petPost.response.status}`);
   const petPage = await request(ownerLocation);
   check(petPage.response.status === 200 && petPage.body.includes(petName), 'Không thấy thú nuôi vừa tạo');
@@ -68,18 +79,26 @@ try {
   check(petIdMatch, 'Không tìm thấy đường dẫn thêm lượt khám cho thú nuôi');
   const petId = Number(petIdMatch[1]);
   await save('03_thu_nuoi.html', petPage.body);
-  result.cases.push({ flow: 'Thêm thú nuôi', status: 'PASS', petId, path: ownerLocation, evidence: '03_thu_nuoi.html' });
+  result.cases.push({ flow: 'Thêm thú nuôi', status: 'PASS', petId, path: ownerLocation,
+    input: petInput, expected: { httpStatus: 302, persisted: true },
+    actual: { httpStatus: petPost.response.status, location: redirectPath(petPost.response), persisted: true },
+    durationMs: Math.round(performance.now() - stepStarted), evidence: '03_thu_nuoi.html' });
 
   const visitRoute = `/owners/${ownerId}/pets/${petId}/visits/new`;
   const visitForm = await request(visitRoute);
   check(visitForm.response.status === 200 && visitForm.body.includes('name="date"'), 'Form lượt khám không mở được');
   const description = `Kham dinh ky ${runId}`;
-  const visitPost = await post(visitRoute, { date: visitDate, description, petId: String(petId) });
+  stepStarted = performance.now();
+  const visitInput = { date: visitDate, description, petId: String(petId) };
+  const visitPost = await post(visitRoute, visitInput);
   check(visitPost.response.status === 302 && redirectPath(visitPost.response) === ownerLocation, `Thêm lượt khám thất bại: ${visitPost.response.status}`);
   const visitPage = await request(ownerLocation);
   check(visitPage.response.status === 200 && visitPage.body.includes(description) && visitPage.body.includes(visitDate), 'Không thấy lượt khám vừa tạo');
   await save('04_luot_kham.html', visitPage.body);
-  result.cases.push({ flow: 'Ghi nhận lượt khám', status: 'PASS', visitDate, path: ownerLocation, evidence: '04_luot_kham.html' });
+  result.cases.push({ flow: 'Ghi nhận lượt khám', status: 'PASS', visitDate, path: ownerLocation,
+    input: visitInput, expected: { httpStatus: 302, persisted: true },
+    actual: { httpStatus: visitPost.response.status, location: redirectPath(visitPost.response), persisted: true },
+    durationMs: Math.round(performance.now() - stepStarted), evidence: '04_luot_kham.html' });
 
   result.status = 'PASS';
   result.ownerId = ownerId;
