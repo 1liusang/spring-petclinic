@@ -1,5 +1,5 @@
 {
-  "commit": "6cb82066a3940cc860ef3458c804185aadfbbe3a",
+  "commit": "dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e",
   "source": "clean clone from GitHub main",
   "command": "mvnw.cmd -B test",
   "totals": {
@@ -15,7 +15,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.932,
+      "seconds": 1.316,
       "skippedCases": []
     },
     {
@@ -36,7 +36,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 4.9,
+      "seconds": 5.258,
       "skippedCases": []
     },
     {
@@ -54,7 +54,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 1.082,
+      "seconds": 1.09,
       "skippedCases": []
     },
     {
@@ -63,7 +63,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.03,
+      "seconds": 0.032,
       "skippedCases": []
     },
     {
@@ -72,7 +72,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.021,
+      "seconds": 0.023,
       "skippedCases": []
     },
     {
@@ -81,7 +81,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.437,
+      "seconds": 0.503,
       "skippedCases": []
     },
     {
@@ -90,7 +90,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 6.476,
+      "seconds": 7.576,
       "skippedCases": []
     },
     {
@@ -99,7 +99,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 1.183,
+      "seconds": 1.286,
       "skippedCases": []
     },
     {
@@ -108,7 +108,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.024,
+      "seconds": 0.022,
       "skippedCases": []
     },
     {
@@ -117,7 +117,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.534,
+      "seconds": 0.562,
       "skippedCases": []
     },
     {
@@ -126,7 +126,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.596,
+      "seconds": 0.818,
       "skippedCases": []
     },
     {
@@ -144,7 +144,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.021,
+      "seconds": 0.029,
       "skippedCases": []
     },
     {
@@ -153,7 +153,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.213,
+      "seconds": 0.236,
       "skippedCases": []
     },
     {
@@ -162,7 +162,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.45,
+      "seconds": 0.451,
       "skippedCases": []
     },
     {
@@ -171,7 +171,7 @@
       "failures": 0,
       "errors": 0,
       "skipped": 0,
-      "seconds": 0.012,
+      "seconds": 0.023,
       "skippedCases": []
     }
   ]

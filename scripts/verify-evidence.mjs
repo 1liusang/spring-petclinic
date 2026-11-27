@@ -30,6 +30,11 @@ export async function verifyEvidence(root = repositoryRoot) {
     ...Array.from({ length: 7 }, (_, i) => `NEG${String(i + 1).padStart(2, '0')}`)].sort();
   assert.deepEqual(summary.cases.map(c => c.id).sort(), expectedIds);
   assert.ok(summary.cases.every(c => c.status === 'PASS'));
+  for (const item of summary.cases) {
+    assert.ok(item.input && item.expected && item.actual, `${item.id}: missing input/expected/actual`);
+    assert.ok(Number.isFinite(item.durationMs) && item.durationMs >= 0, `${item.id}: missing duration`);
+    assert.equal(item.actual.httpStatus, item.expected.httpStatus, `${item.id}: wrong HTTP status`);
+  }
   assert.equal(summary.jobs.length, 3);
   assert.ok(summary.jobs.every(job => job.exitCode === 0 && !job.error));
 
@@ -99,6 +104,9 @@ export async function verifyEvidence(root = repositoryRoot) {
     assert.equal(item.status, 'PASS');
     assert.ok(new RegExp(`class="form-group has-error"[\\s\\S]{0,200}<label for="${item.validationField}"`).test(html),
       `${item.id}: wrong validation field`);
+    assert.ok(typeof item.expected.message === 'string' && html.includes(item.expected.message),
+      `${item.id}: expected validation message absent`);
+    assert.equal(item.actual.message, item.expected.message);
     assert.ok(search.includes('has not been found'), `${item.id}: rejected owner search is not empty`);
     assert.equal(item.actual.persisted, false);
   }

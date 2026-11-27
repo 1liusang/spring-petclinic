@@ -1,0 +1,65 @@
+{
+  "runId": "mwymg1e7c11f2a",
+  "ranAt": "2026-11-27T06:49:56.903Z",
+  "commit": "dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e",
+  "dirty": false,
+  "applicationCommit": "dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "base": "http://localhost:18088",
+  "cases": [
+    {
+      "id": "TC05",
+      "description": "Duplicate pet name",
+      "status": "PASS",
+      "input": {
+        "name": "Milomwymg1e7c11f2a",
+        "birthDate": "2025-11-26",
+        "type": "cat"
+      },
+      "durationMs": 40,
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "name",
+        "petCount": 1
+      },
+      "actual": {
+        "httpStatus": 200,
+        "petCount": 1
+      },
+      "httpStatus": 200,
+      "ownerId": 26,
+      "petId": 15,
+      "petCount": 1,
+      "evidence": "TC05.html",
+      "afterEvidence": "TC05_after.html"
+    },
+    {
+      "id": "TC07",
+      "description": "Visit date today",
+      "status": "PASS",
+      "input": {
+        "date": "2026-11-26",
+        "description": "Same day visit mwymg1e7c11f2a",
+        "petId": "15"
+      },
+      "durationMs": 26,
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "date",
+        "persisted": false
+      },
+      "actual": {
+        "httpStatus": 200,
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "date": "2026-11-26",
+      "ownerId": 26,
+      "petId": 15,
+      "evidence": "TC07.html",
+      "afterEvidence": "TC07_after.html"
+    }
+  ],
+  "status": "PASS"
+}

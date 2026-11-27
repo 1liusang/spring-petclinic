@@ -1,11 +1,17 @@
-✔ coverage rejects an incomplete suite and unknown classes (223.2307ms)
-✔ a failing server overwrites an old PASS summary and returns nonzero (243.8366ms)
-✔ HTTP timeout stops a server that never responds (382.2725ms)
-ℹ tests 3
+✔ published evidence passes independently of an application or PICT binary (42.6045ms)
+✔ missing HTML evidence is rejected (148.6515ms)
+✔ a stored PASS cannot conceal missing persisted data (193.2747ms)
+✔ replacing a CSV case ID with a duplicate is rejected (174.3923ms)
+✔ changed Maven log fails the snapshot hash check (148.4717ms)
+✔ a manifest cannot silently omit a verification file (126.6313ms)
+✔ coverage rejects an incomplete suite and unknown classes (232.076ms)
+✔ a failing server overwrites an old PASS summary and returns nonzero (285.3379ms)
+✔ HTTP timeout stops a server that never responds (419.0788ms)
+ℹ tests 9
 ℹ suites 0
-ℹ pass 3
+ℹ pass 9
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 948.9881
+ℹ duration_ms 1043.9849

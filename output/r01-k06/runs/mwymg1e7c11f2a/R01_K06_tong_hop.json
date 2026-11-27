@@ -1,0 +1,1052 @@
+{
+  "runId": "mwymg1e7c11f2a",
+  "ranAt": "2026-11-27T06:49:54.706Z",
+  "commit": "dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e",
+  "dirty": false,
+  "applicationCommit": "dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "base": "http://localhost:18088",
+  "runDirectory": "output/r01-k06/runs/mwymg1e7c11f2a",
+  "jobs": [
+    {
+      "name": "Ba luồng nghiệp vụ",
+      "file": "demo_3_luong.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "durationMs": 775
+    },
+    {
+      "name": "Pairwise và dữ liệu sai",
+      "file": "pairwise_owner/run_owner_pairwise.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "durationMs": 722
+    },
+    {
+      "name": "Tên thú nuôi trùng và ngày khám hôm nay",
+      "file": "pairwise_owner/run_remaining_flows.mjs",
+      "exitCode": 0,
+      "signal": null,
+      "durationMs": 337
+    }
+  ],
+  "cases": [
+    {
+      "flow": "Thêm chủ nuôi",
+      "status": "PASS",
+      "ownerId": 11,
+      "path": "/owners/11",
+      "input": {
+        "firstName": "An",
+        "lastName": "KTPMmwymg1e7c11f2a",
+        "address": "12 Tran Phu",
+        "city": "Da Lat",
+        "telephone": "0123456789"
+      },
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true
+      },
+      "actual": {
+        "httpStatus": 302,
+        "location": "/owners/11",
+        "persisted": true
+      },
+      "durationMs": 225,
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/demo/02_chu_nuoi.html",
+      "id": "TC01",
+      "group": "Luồng nghiệp vụ",
+      "description": "Thêm chủ nuôi"
+    },
+    {
+      "flow": "Tìm chủ nuôi",
+      "status": "PASS",
+      "query": "KTPMmwymg1e7c11f2a",
+      "ownerId": 11,
+      "input": {
+        "lastName": "KTPMmwymg1e7c11f2a"
+      },
+      "expected": {
+        "httpStatus": 302,
+        "location": "/owners/11"
+      },
+      "actual": {
+        "httpStatus": 302,
+        "location": "/owners/11"
+      },
+      "durationMs": 117,
+      "id": "FIND",
+      "group": "Luồng nghiệp vụ",
+      "description": "Tìm chủ nuôi",
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/demo/ket_qua.json"
+    },
+    {
+      "flow": "Thêm thú nuôi",
+      "status": "PASS",
+      "petId": 14,
+      "path": "/owners/11",
+      "input": {
+        "name": "Milomwymg1e7c11f2a",
+        "birthDate": "2026-10-27",
+        "type": "cat"
+      },
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true
+      },
+      "actual": {
+        "httpStatus": 302,
+        "location": "/owners/11",
+        "persisted": true
+      },
+      "durationMs": 82,
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/demo/03_thu_nuoi.html",
+      "id": "TC04",
+      "group": "Luồng nghiệp vụ",
+      "description": "Thêm thú nuôi"
+    },
+    {
+      "flow": "Ghi nhận lượt khám",
+      "status": "PASS",
+      "visitDate": "2026-11-27",
+      "path": "/owners/11",
+      "input": {
+        "date": "2026-11-27",
+        "description": "Kham dinh ky mwymg1e7c11f2a",
+        "petId": "14"
+      },
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true
+      },
+      "actual": {
+        "httpStatus": 302,
+        "location": "/owners/11",
+        "persisted": true
+      },
+      "durationMs": 36,
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/demo/04_luot_kham.html",
+      "id": "TC06",
+      "group": "Luồng nghiệp vụ",
+      "description": "Ghi nhận lượt khám"
+    },
+    {
+      "id": "PW01",
+      "classes": {
+        "firstName": "max30",
+        "lastName": "short",
+        "address": "short",
+        "city": "max80",
+        "telephone": "digitsB"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "TestPWmwymg1e7c11f2a01",
+        "address": "12 Tran Phu",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "0987654321"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "lastName": "TestPWmwymg1e7c11f2a01",
+          "address": "12 Tran Phu",
+          "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+          "telephone": "0987654321"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/12",
+      "ownerId": 12,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW01.html",
+      "durationMs": 34.68,
+      "group": "Pairwise",
+      "description": "firstName=max30; lastName=short; address=short; city=max80; telephone=digitsB"
+    },
+    {
+      "id": "PW02",
+      "classes": {
+        "firstName": "short",
+        "lastName": "max30",
+        "address": "short",
+        "city": "unicode",
+        "telephone": "digitsC"
+      },
+      "input": {
+        "firstName": "An",
+        "lastName": "LXXXXXXXXXXXPWmwymg1e7c11f2a02",
+        "address": "12 Tran Phu",
+        "city": "Đà Lạt",
+        "telephone": "5551234567"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "An",
+          "lastName": "LXXXXXXXXXXXPWmwymg1e7c11f2a02",
+          "address": "12 Tran Phu",
+          "city": "Đà Lạt",
+          "telephone": "5551234567"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/13",
+      "ownerId": 13,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW02.html",
+      "durationMs": 25.81,
+      "group": "Pairwise",
+      "description": "firstName=short; lastName=max30; address=short; city=unicode; telephone=digitsC"
+    },
+    {
+      "id": "PW03",
+      "classes": {
+        "firstName": "unicode",
+        "lastName": "unicode",
+        "address": "max255",
+        "city": "short",
+        "telephone": "digitsC"
+      },
+      "input": {
+        "firstName": "Ánh",
+        "lastName": "ĐứcPWmwymg1e7c11f2a03",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "city": "Da Lat",
+        "telephone": "5551234567"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "Ánh",
+          "lastName": "ĐứcPWmwymg1e7c11f2a03",
+          "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "city": "Da Lat",
+          "telephone": "5551234567"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/14",
+      "ownerId": 14,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW03.html",
+      "durationMs": 24.76,
+      "group": "Pairwise",
+      "description": "firstName=unicode; lastName=unicode; address=max255; city=short; telephone=digitsC"
+    },
+    {
+      "id": "PW04",
+      "classes": {
+        "firstName": "unicode",
+        "lastName": "max30",
+        "address": "short",
+        "city": "short",
+        "telephone": "digitsA"
+      },
+      "input": {
+        "firstName": "Ánh",
+        "lastName": "LXXXXXXXXXXXPWmwymg1e7c11f2a04",
+        "address": "12 Tran Phu",
+        "city": "Da Lat",
+        "telephone": "0123456789"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "Ánh",
+          "lastName": "LXXXXXXXXXXXPWmwymg1e7c11f2a04",
+          "address": "12 Tran Phu",
+          "city": "Da Lat",
+          "telephone": "0123456789"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/15",
+      "ownerId": 15,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW04.html",
+      "durationMs": 19.94,
+      "group": "Pairwise",
+      "description": "firstName=unicode; lastName=max30; address=short; city=short; telephone=digitsA"
+    },
+    {
+      "id": "PW05",
+      "classes": {
+        "firstName": "short",
+        "lastName": "short",
+        "address": "max255",
+        "city": "unicode",
+        "telephone": "digitsA"
+      },
+      "input": {
+        "firstName": "An",
+        "lastName": "TestPWmwymg1e7c11f2a05",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "city": "Đà Lạt",
+        "telephone": "0123456789"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "An",
+          "lastName": "TestPWmwymg1e7c11f2a05",
+          "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "city": "Đà Lạt",
+          "telephone": "0123456789"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/16",
+      "ownerId": 16,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW05.html",
+      "durationMs": 20.08,
+      "group": "Pairwise",
+      "description": "firstName=short; lastName=short; address=max255; city=unicode; telephone=digitsA"
+    },
+    {
+      "id": "PW06",
+      "classes": {
+        "firstName": "unicode",
+        "lastName": "unicode",
+        "address": "unicode",
+        "city": "unicode",
+        "telephone": "digitsB"
+      },
+      "input": {
+        "firstName": "Ánh",
+        "lastName": "ĐứcPWmwymg1e7c11f2a06",
+        "address": "12 Đường Trần Phú",
+        "city": "Đà Lạt",
+        "telephone": "0987654321"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "Ánh",
+          "lastName": "ĐứcPWmwymg1e7c11f2a06",
+          "address": "12 Đường Trần Phú",
+          "city": "Đà Lạt",
+          "telephone": "0987654321"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/17",
+      "ownerId": 17,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW06.html",
+      "durationMs": 18.59,
+      "group": "Pairwise",
+      "description": "firstName=unicode; lastName=unicode; address=unicode; city=unicode; telephone=digitsB"
+    },
+    {
+      "id": "PW07",
+      "classes": {
+        "firstName": "unicode",
+        "lastName": "short",
+        "address": "unicode",
+        "city": "max80",
+        "telephone": "digitsA"
+      },
+      "input": {
+        "firstName": "Ánh",
+        "lastName": "TestPWmwymg1e7c11f2a07",
+        "address": "12 Đường Trần Phú",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "0123456789"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "Ánh",
+          "lastName": "TestPWmwymg1e7c11f2a07",
+          "address": "12 Đường Trần Phú",
+          "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+          "telephone": "0123456789"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/18",
+      "ownerId": 18,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW07.html",
+      "durationMs": 21.67,
+      "group": "Pairwise",
+      "description": "firstName=unicode; lastName=short; address=unicode; city=max80; telephone=digitsA"
+    },
+    {
+      "id": "PW08",
+      "classes": {
+        "firstName": "short",
+        "lastName": "max30",
+        "address": "max255",
+        "city": "max80",
+        "telephone": "digitsB"
+      },
+      "input": {
+        "firstName": "An",
+        "lastName": "LXXXXXXXXXXXPWmwymg1e7c11f2a08",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "0987654321"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "An",
+          "lastName": "LXXXXXXXXXXXPWmwymg1e7c11f2a08",
+          "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+          "telephone": "0987654321"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/19",
+      "ownerId": 19,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW08.html",
+      "durationMs": 21.22,
+      "group": "Pairwise",
+      "description": "firstName=short; lastName=max30; address=max255; city=max80; telephone=digitsB"
+    },
+    {
+      "id": "PW09",
+      "classes": {
+        "firstName": "max30",
+        "lastName": "unicode",
+        "address": "max255",
+        "city": "max80",
+        "telephone": "digitsC"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "ĐứcPWmwymg1e7c11f2a09",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "5551234567"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "lastName": "ĐứcPWmwymg1e7c11f2a09",
+          "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+          "telephone": "5551234567"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/20",
+      "ownerId": 20,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW09.html",
+      "durationMs": 19.54,
+      "group": "Pairwise",
+      "description": "firstName=max30; lastName=unicode; address=max255; city=max80; telephone=digitsC"
+    },
+    {
+      "id": "PW10",
+      "classes": {
+        "firstName": "max30",
+        "lastName": "max30",
+        "address": "unicode",
+        "city": "short",
+        "telephone": "digitsA"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "LXXXXXXXXXXXPWmwymg1e7c11f2a10",
+        "address": "12 Đường Trần Phú",
+        "city": "Da Lat",
+        "telephone": "0123456789"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "lastName": "LXXXXXXXXXXXPWmwymg1e7c11f2a10",
+          "address": "12 Đường Trần Phú",
+          "city": "Da Lat",
+          "telephone": "0123456789"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/21",
+      "ownerId": 21,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW10.html",
+      "durationMs": 20.05,
+      "group": "Pairwise",
+      "description": "firstName=max30; lastName=max30; address=unicode; city=short; telephone=digitsA"
+    },
+    {
+      "id": "PW11",
+      "classes": {
+        "firstName": "max30",
+        "lastName": "short",
+        "address": "unicode",
+        "city": "unicode",
+        "telephone": "digitsC"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "TestPWmwymg1e7c11f2a11",
+        "address": "12 Đường Trần Phú",
+        "city": "Đà Lạt",
+        "telephone": "5551234567"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "lastName": "TestPWmwymg1e7c11f2a11",
+          "address": "12 Đường Trần Phú",
+          "city": "Đà Lạt",
+          "telephone": "5551234567"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/22",
+      "ownerId": 22,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW11.html",
+      "durationMs": 20.84,
+      "group": "Pairwise",
+      "description": "firstName=max30; lastName=short; address=unicode; city=unicode; telephone=digitsC"
+    },
+    {
+      "id": "PW12",
+      "classes": {
+        "firstName": "short",
+        "lastName": "unicode",
+        "address": "unicode",
+        "city": "short",
+        "telephone": "digitsA"
+      },
+      "input": {
+        "firstName": "An",
+        "lastName": "ĐứcPWmwymg1e7c11f2a12",
+        "address": "12 Đường Trần Phú",
+        "city": "Da Lat",
+        "telephone": "0123456789"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "An",
+          "lastName": "ĐứcPWmwymg1e7c11f2a12",
+          "address": "12 Đường Trần Phú",
+          "city": "Da Lat",
+          "telephone": "0123456789"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/23",
+      "ownerId": 23,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW12.html",
+      "durationMs": 20.45,
+      "group": "Pairwise",
+      "description": "firstName=short; lastName=unicode; address=unicode; city=short; telephone=digitsA"
+    },
+    {
+      "id": "PW13",
+      "classes": {
+        "firstName": "short",
+        "lastName": "unicode",
+        "address": "short",
+        "city": "short",
+        "telephone": "digitsB"
+      },
+      "input": {
+        "firstName": "An",
+        "lastName": "ĐứcPWmwymg1e7c11f2a13",
+        "address": "12 Tran Phu",
+        "city": "Da Lat",
+        "telephone": "0987654321"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "An",
+          "lastName": "ĐứcPWmwymg1e7c11f2a13",
+          "address": "12 Tran Phu",
+          "city": "Da Lat",
+          "telephone": "0987654321"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/24",
+      "ownerId": 24,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW13.html",
+      "durationMs": 21.5,
+      "group": "Pairwise",
+      "description": "firstName=short; lastName=unicode; address=short; city=short; telephone=digitsB"
+    },
+    {
+      "id": "PW14",
+      "classes": {
+        "firstName": "max30",
+        "lastName": "short",
+        "address": "max255",
+        "city": "short",
+        "telephone": "digitsA"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "TestPWmwymg1e7c11f2a14",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "city": "Da Lat",
+        "telephone": "0123456789"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fields": {
+          "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "lastName": "TestPWmwymg1e7c11f2a14",
+          "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+          "city": "Da Lat",
+          "telephone": "0123456789"
+        }
+      },
+      "httpStatus": 302,
+      "location": "/owners/25",
+      "ownerId": 25,
+      "actual": {
+        "httpStatus": 302,
+        "persisted": true,
+        "fieldsMatch": true
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/PW14.html",
+      "durationMs": 19.47,
+      "group": "Pairwise",
+      "description": "firstName=max30; lastName=short; address=max255; city=short; telephone=digitsA"
+    },
+    {
+      "id": "NEG01",
+      "classes": {
+        "description": "blank firstName"
+      },
+      "input": {
+        "firstName": "",
+        "lastName": "Badmwymg1e7c11f2aNEG01",
+        "address": "12 Tran Phu",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "0987654321"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "firstName",
+        "message": "must not be blank",
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "location": "",
+      "validationField": "firstName",
+      "actual": {
+        "validationField": "firstName",
+        "message": "must not be blank",
+        "persisted": false,
+        "httpStatus": 200
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG01.html",
+      "searchEvidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG01_search.html",
+      "durationMs": 46.18,
+      "group": "Dữ liệu sai",
+      "description": "blank firstName"
+    },
+    {
+      "id": "NEG02",
+      "classes": {
+        "description": "9 digit telephone"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "Badmwymg1e7c11f2aNEG02",
+        "address": "12 Tran Phu",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "123456789"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "telephone",
+        "message": "Telephone must be a 10-digit number",
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "location": "",
+      "validationField": "telephone",
+      "actual": {
+        "validationField": "telephone",
+        "message": "Telephone must be a 10-digit number",
+        "persisted": false,
+        "httpStatus": 200
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG02.html",
+      "searchEvidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG02_search.html",
+      "durationMs": 30.82,
+      "group": "Dữ liệu sai",
+      "description": "9 digit telephone"
+    },
+    {
+      "id": "NEG03",
+      "classes": {
+        "description": "nondigit telephone"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "Badmwymg1e7c11f2aNEG03",
+        "address": "12 Tran Phu",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "12345abcde"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "telephone",
+        "message": "Telephone must be a 10-digit number",
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "location": "",
+      "validationField": "telephone",
+      "actual": {
+        "validationField": "telephone",
+        "message": "Telephone must be a 10-digit number",
+        "persisted": false,
+        "httpStatus": 200
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG03.html",
+      "searchEvidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG03_search.html",
+      "durationMs": 28.39,
+      "group": "Dữ liệu sai",
+      "description": "nondigit telephone"
+    },
+    {
+      "id": "NEG04",
+      "classes": {
+        "description": "31 character firstName"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "Badmwymg1e7c11f2aNEG04",
+        "address": "12 Tran Phu",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "0987654321"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "firstName",
+        "message": "size must be between 0 and 30",
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "location": "",
+      "validationField": "firstName",
+      "actual": {
+        "validationField": "firstName",
+        "message": "size must be between 0 and 30",
+        "persisted": false,
+        "httpStatus": 200
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG04.html",
+      "searchEvidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG04_search.html",
+      "durationMs": 26.44,
+      "group": "Dữ liệu sai",
+      "description": "31 character firstName"
+    },
+    {
+      "id": "NEG05",
+      "classes": {
+        "description": "31 character lastName"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL",
+        "address": "12 Tran Phu",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "0987654321"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "lastName",
+        "message": "size must be between 0 and 30",
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "location": "",
+      "validationField": "lastName",
+      "actual": {
+        "validationField": "lastName",
+        "message": "size must be between 0 and 30",
+        "persisted": false,
+        "httpStatus": 200
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG05.html",
+      "searchEvidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG05_search.html",
+      "durationMs": 27.21,
+      "group": "Dữ liệu sai",
+      "description": "31 character lastName"
+    },
+    {
+      "id": "NEG06",
+      "classes": {
+        "description": "256 character address"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "Badmwymg1e7c11f2aNEG06",
+        "address": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "0987654321"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "address",
+        "message": "size must be between 0 and 255",
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "location": "",
+      "validationField": "address",
+      "actual": {
+        "validationField": "address",
+        "message": "size must be between 0 and 255",
+        "persisted": false,
+        "httpStatus": 200
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG06.html",
+      "searchEvidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG06_search.html",
+      "durationMs": 28.29,
+      "group": "Dữ liệu sai",
+      "description": "256 character address"
+    },
+    {
+      "id": "NEG07",
+      "classes": {
+        "description": "81 character city"
+      },
+      "input": {
+        "firstName": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "lastName": "Badmwymg1e7c11f2aNEG07",
+        "address": "12 Tran Phu",
+        "city": "CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC",
+        "telephone": "0987654321"
+      },
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "city",
+        "message": "size must be between 0 and 80",
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "location": "",
+      "validationField": "city",
+      "actual": {
+        "validationField": "city",
+        "message": "size must be between 0 and 80",
+        "persisted": false,
+        "httpStatus": 200
+      },
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG07.html",
+      "searchEvidence": "output/r01-k06/runs/mwymg1e7c11f2a/owner/NEG07_search.html",
+      "durationMs": 26.82,
+      "group": "Dữ liệu sai",
+      "description": "81 character city"
+    },
+    {
+      "id": "TC05",
+      "description": "Duplicate pet name",
+      "status": "PASS",
+      "input": {
+        "name": "Milomwymg1e7c11f2a",
+        "birthDate": "2025-11-26",
+        "type": "cat"
+      },
+      "durationMs": 40,
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "name",
+        "petCount": 1
+      },
+      "actual": {
+        "httpStatus": 200,
+        "petCount": 1
+      },
+      "httpStatus": 200,
+      "ownerId": 26,
+      "petId": 15,
+      "petCount": 1,
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/flows/TC05.html",
+      "afterEvidence": "output/r01-k06/runs/mwymg1e7c11f2a/flows/TC05_after.html",
+      "group": "Luồng âm tính"
+    },
+    {
+      "id": "TC07",
+      "description": "Visit date today",
+      "status": "PASS",
+      "input": {
+        "date": "2026-11-26",
+        "description": "Same day visit mwymg1e7c11f2a",
+        "petId": "15"
+      },
+      "durationMs": 26,
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "date",
+        "persisted": false
+      },
+      "actual": {
+        "httpStatus": 200,
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "date": "2026-11-26",
+      "ownerId": 26,
+      "petId": 15,
+      "evidence": "output/r01-k06/runs/mwymg1e7c11f2a/flows/TC07.html",
+      "afterEvidence": "output/r01-k06/runs/mwymg1e7c11f2a/flows/TC07_after.html",
+      "group": "Luồng âm tính"
+    }
+  ],
+  "status": "PASS",
+  "serverInfo": {
+    "git": {
+      "branch": "main",
+      "commit": {
+        "id": "dc1ea45",
+        "time": "2026-11-27T06:49:17Z"
+      }
+    },
+    "build": {
+      "artifact": "spring-petclinic",
+      "encoding": {
+        "reporting": "UTF-8",
+        "source": "UTF-8"
+      },
+      "java": {
+        "source": "17",
+        "target": "17"
+      },
+      "name": "petclinic",
+      "time": "2024-11-28T14:37:52Z",
+      "version": "4.0.0-SNAPSHOT",
+      "group": "org.springframework.samples"
+    }
+  },
+  "pictVerification": {
+    "runId": "mwymg1e7c11f2a",
+    "ranAt": "2026-11-27T06:49:55.192Z",
+    "commit": "dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e",
+    "dirty": false,
+    "applicationCommit": "dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e",
+    "node": "v24.21.0",
+    "platform": "win32",
+    "base": "http://localhost:18088",
+    "executable": "C:/Users/Administrator/Documents/KTPM/.tmp/pict.exe",
+    "command": "pict owner_model.pict /o:2 /r:20261017",
+    "status": "PASS",
+    "sha256": "80aba862739cf18b4faa13d408163324d188a1c4efccdd977d9c5ba3f8950bbd",
+    "generatedCases": 14,
+    "matchesSavedCases": true
+  },
+  "coverage": {
+    "generatedCases": 14,
+    "exhaustiveCases": 243,
+    "totalPairs": 90,
+    "coveredPairs": 90,
+    "missingPairs": []
+  },
+  "total": 27,
+  "passed": 27,
+  "durationMs": 2478
+}

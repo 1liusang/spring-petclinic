@@ -1,0 +1,103 @@
+{
+  "runId": "mwymg1e7c11f2a",
+  "ranAt": "2026-11-27T06:49:55.393Z",
+  "commit": "dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e",
+  "dirty": false,
+  "applicationCommit": "dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "base": "http://localhost:18088",
+  "cases": [
+    {
+      "flow": "Thêm chủ nuôi",
+      "status": "PASS",
+      "ownerId": 11,
+      "path": "/owners/11",
+      "input": {
+        "firstName": "An",
+        "lastName": "KTPMmwymg1e7c11f2a",
+        "address": "12 Tran Phu",
+        "city": "Da Lat",
+        "telephone": "0123456789"
+      },
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true
+      },
+      "actual": {
+        "httpStatus": 302,
+        "location": "/owners/11",
+        "persisted": true
+      },
+      "durationMs": 225,
+      "evidence": "02_chu_nuoi.html"
+    },
+    {
+      "flow": "Tìm chủ nuôi",
+      "status": "PASS",
+      "query": "KTPMmwymg1e7c11f2a",
+      "ownerId": 11,
+      "input": {
+        "lastName": "KTPMmwymg1e7c11f2a"
+      },
+      "expected": {
+        "httpStatus": 302,
+        "location": "/owners/11"
+      },
+      "actual": {
+        "httpStatus": 302,
+        "location": "/owners/11"
+      },
+      "durationMs": 117
+    },
+    {
+      "flow": "Thêm thú nuôi",
+      "status": "PASS",
+      "petId": 14,
+      "path": "/owners/11",
+      "input": {
+        "name": "Milomwymg1e7c11f2a",
+        "birthDate": "2026-10-27",
+        "type": "cat"
+      },
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true
+      },
+      "actual": {
+        "httpStatus": 302,
+        "location": "/owners/11",
+        "persisted": true
+      },
+      "durationMs": 82,
+      "evidence": "03_thu_nuoi.html"
+    },
+    {
+      "flow": "Ghi nhận lượt khám",
+      "status": "PASS",
+      "visitDate": "2026-11-27",
+      "path": "/owners/11",
+      "input": {
+        "date": "2026-11-27",
+        "description": "Kham dinh ky mwymg1e7c11f2a",
+        "petId": "14"
+      },
+      "expected": {
+        "httpStatus": 302,
+        "persisted": true
+      },
+      "actual": {
+        "httpStatus": 302,
+        "location": "/owners/11",
+        "persisted": true
+      },
+      "durationMs": 36,
+      "evidence": "04_luot_kham.html"
+    }
+  ],
+  "status": "PASS",
+  "ownerId": 11,
+  "petId": 14,
+  "ownerName": "An KTPMmwymg1e7c11f2a",
+  "petName": "Milomwymg1e7c11f2a"
+}
