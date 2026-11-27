@@ -4,6 +4,10 @@
 
 Phân công: [9 task](PHAN_CONG_R01_K06.md). Tài liệu: [setup và reset dữ liệu](docs/setup.md), [phân tích hệ thống](docs/system-analysis.md), [kiến trúc](docs/architecture.md), [phiên bản](docs/version.md).
 
+Báo cáo hiện hành: [báo cáo kỹ thuật A–H](docs/bao-cao-tong-ket.md), [kết quả thực nghiệm](reports/test-results.md), [bao phủ cặp](reports/pairwise-coverage.md), [lịch sử công việc và phần chờ review](docs/lich-su-cong-viec.md), [kịch bản demo](docs/kich-ban-demo.md). Word/PDF/PowerPoint có sẵn là bản cũ, chưa thay thế bằng báo cáo cuối kỳ đã nghiệm thu.
+
+Kiểm tra bằng chứng đã công bố bằng `node scripts/verify-evidence.mjs`. Bộ test công cụ: `node --test tests/harness.test.mjs tests/evidence.test.mjs`. Snapshot hiện hành đạt 27/27 ca HTTP, 90/90 cặp; Maven thống kê 79 test với 2 skipped. Xem báo cáo để biết phiên bản, dữ liệu và giới hạn.
+
 Từ gốc repo: mở ứng dụng theo setup, chạy `node pairwise_owner/run_owner_pairwise.mjs --check` để kiểm tra bao phủ; chạy `node run_r01_k06.mjs` để thực thi bài HTTP. Cần Node.js 18+, xem setup cho cấu hình môi trường và PICT.
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/spring-projects/spring-petclinic) [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=7517918)

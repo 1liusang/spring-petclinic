@@ -33,61 +33,61 @@ Mỗi người tự viết nội dung báo cáo cho phần mình phụ trách. C
 
 #### R01-01: Phân tích hệ thống và kiến trúc
 
-- [ ] Ghi nhận mục tiêu hệ thống, tác nhân và các use case trong phạm vi.
-- [ ] Mô tả cây thư mục, dependency chính và 3–5 module liên quan đến kiểm thử.
-- [ ] Vẽ ít nhất 1 sơ đồ kiến trúc ở mức component/container.
-- [ ] Mô tả luồng dữ liệu của 3 nghiệp vụ: tạo chủ nuôi, thêm thú cưng, thêm lượt khám.
-- **Bàn giao:** `docs/system-analysis.md`, `docs/architecture.md`, sơ đồ trong `docs/diagrams/`.
+- [x] Ghi nhận mục tiêu hệ thống, tác nhân và các use case trong phạm vi.
+- [x] Mô tả cây thư mục, dependency chính và 3–5 module liên quan đến kiểm thử.
+- [x] Vẽ ít nhất 1 sơ đồ kiến trúc ở mức component/container.
+- [x] Mô tả luồng dữ liệu của 3 nghiệp vụ: tạo chủ nuôi, thêm thú cưng, thêm lượt khám.
+- **Bàn giao:** `docs/system-analysis.md`, `docs/architecture.md` (sơ đồ Mermaid trong tài liệu).
 - **Hoàn thành khi:** mô tả khớp mã nguồn tại commit đã chọn, có đường dẫn tới các thành phần liên quan và được một thành viên khác review.
 
 #### R01-02: Thiết lập môi trường và cố định phiên bản
 
-- [ ] Lưu URL repo gốc, commit SHA/tag dùng cho đề tài.
-- [ ] Ghi phiên bản Java, công cụ build, cấu hình DB, cổng và biến môi trường cần thiết theo phiên bản đã chọn.
-- [ ] Viết hướng dẫn build/run, nạp dữ liệu ban đầu và xử lý lỗi cài đặt thường gặp.
-- [ ] Hướng dẫn reset dữ liệu để các lần chạy test có điều kiện ban đầu tương đương.
+- [x] Lưu URL repo gốc, commit SHA/tag dùng cho đề tài.
+- [x] Ghi phiên bản Java, công cụ build, cấu hình DB, cổng và biến môi trường cần thiết theo phiên bản đã chọn.
+- [x] Viết hướng dẫn build/run, nạp dữ liệu ban đầu và xử lý lỗi cài đặt thường gặp.
+- [x] Hướng dẫn reset dữ liệu để các lần chạy test có điều kiện ban đầu tương đương.
 - [ ] Nhờ một thành viên khác làm theo hướng dẫn để xác nhận chạy lại được.
-- **Bàn giao:** `docs/setup.md`, `docs/version.md`, phần bắt đầu nhanh trong `README.md`.
+- **Bàn giao:** `docs/setup.md`, `docs/version.md`, `README.md`; log clone sạch trong `reports/verification/`.
 - **Hoàn thành khi:** thành viên khác có thể dựng ứng dụng và mở được trang chủ bằng hướng dẫn.
 
 #### R01-03: Demo 3 luồng và tích hợp hướng dẫn chạy
 
-- [ ] Chuẩn bị dữ liệu và script demo tạo chủ nuôi → thêm thú cưng → thêm lượt khám.
-- [ ] Kiểm tra dữ liệu tạo ra xuất hiện đúng trên trang chi tiết.
+- [x] Chuẩn bị dữ liệu và script demo tạo chủ nuôi → thêm thú cưng → thêm lượt khám.
+- [x] Kiểm tra dữ liệu tạo ra xuất hiện đúng trên trang chi tiết.
 - [ ] Lưu log và ảnh minh chứng cho từng luồng.
-- [ ] Tích hợp lệnh sinh test, chạy test và xem kết quả vào README sau khi nhận bàn giao từ Đức và Thạch.
-- **Bàn giao:** `scripts/demo-flows.*`, `evidence/demo/`, `README.md`.
+- [x] Tích hợp lệnh sinh test, chạy test và xem kết quả vào README sau khi nhận bàn giao từ Đức và Thạch.
+- **Bàn giao:** `demo_3_luong.mjs`, HTML/JSON tại thư mục `demo` trong run mới, `README.md`.
 - **Hoàn thành khi:** 3 luồng chạy thành công và các bước chạy lại được ghi rõ.
 
 ### Thành viên 2 — Lâm Văn Đức
 
 #### K06-01: Lý thuyết và kế hoạch kiểm thử Pairwise
 
-- [ ] Giải thích Pairwise, tương tác 2 chiều và khác biệt với vét cạn.
-- [ ] Chốt phạm vi form chủ nuôi, giả định, rủi ro và giới hạn của kỹ thuật.
-- [ ] Đọc validation tại phiên bản đã chọn để xác định các lớp dữ liệu hợp lệ, không hợp lệ và biên.
-- [ ] Định nghĩa precondition, expected result và tiêu chí pass/fail cho từng nhóm ca.
+- [x] Giải thích Pairwise, tương tác 2 chiều và khác biệt với vét cạn.
+- [x] Chốt phạm vi form chủ nuôi, giả định, rủi ro và giới hạn của kỹ thuật.
+- [x] Đọc validation tại phiên bản đã chọn để xác định các lớp dữ liệu hợp lệ, không hợp lệ và biên.
+- [x] Định nghĩa precondition, expected result và tiêu chí pass/fail cho từng nhóm ca.
 - **Bàn giao:** `docs/test-plan.md`, `docs/pairwise-theory.md`.
 - **Hoàn thành khi:** từng lớp dữ liệu có lý do lựa chọn; kỳ vọng dựa trên quy tắc thực tế, không tự giả định ràng buộc.
 
 #### K06-02: Xây dựng mô hình PICT và sinh test
 
-- [ ] Mô hình hóa 5 trường đầu vào với các mức giá trị đại diện và constraint nếu có.
-- [ ] Lưu ánh xạ từ mức giá trị trong mô hình sang dữ liệu cụ thể để runner sử dụng.
-- [ ] Sinh bộ Pairwise bằng Microsoft PICT; lưu phiên bản công cụ, câu lệnh và seed nếu sử dụng.
-- [ ] Bổ sung ca âm tính, ca biên riêng để tránh một lỗi đầu vào che khuất lỗi khác.
+- [x] Mô hình hóa 5 trường đầu vào với các mức giá trị đại diện và constraint nếu có.
+- [x] Lưu ánh xạ từ mức giá trị trong mô hình sang dữ liệu cụ thể để runner sử dụng.
+- [x] Sinh bộ Pairwise bằng Microsoft PICT; lưu phiên bản công cụ, câu lệnh và seed nếu sử dụng.
+- [x] Bổ sung ca âm tính, ca biên riêng để tránh một lỗi đầu vào che khuất lỗi khác.
 - [ ] Bàn giao dữ liệu có ID ổn định và expected result cho Thạch triển khai runner.
-- **Bàn giao:** `tests/models/owner.pict`, `tests/data/owner-pairwise.tsv`, `tests/data/owner-validation.json`.
+- **Bàn giao:** `pairwise_owner/owner_model.pict`, `owner_cases.tsv`, ánh xạ trong test plan/runner; input và expected trong JSON run.
 - **Hoàn thành khi:** sinh lại được bộ test và mọi ca có dữ liệu thực thi cùng kỳ vọng rõ ràng.
 
 #### K06-03: Kiểm tra bao phủ và so sánh với vét cạn
 
-- [ ] Viết script liệt kê các cặp giá trị cần bao phủ và kiểm tra bộ test đã sinh.
-- [ ] Tính bao phủ cặp = số cặp hợp lệ đã xuất hiện / tổng số cặp hợp lệ cần bao phủ.
-- [ ] Nếu có constraint, loại các cặp bất khả thi khỏi mẫu số và giải thích cách xác định.
-- [ ] So sánh số ca Pairwise với số tổ hợp vét cạn trên cùng mô hình.
-- [ ] Ghi số ca thực tế, tỷ lệ giảm và các cặp còn thiếu nếu có.
-- **Bàn giao:** `scripts/check-pairwise-coverage.*`, `reports/pairwise-coverage.md`.
+- [x] Viết script liệt kê các cặp giá trị cần bao phủ và kiểm tra bộ test đã sinh.
+- [x] Tính bao phủ cặp = số cặp hợp lệ đã xuất hiện / tổng số cặp hợp lệ cần bao phủ.
+- [x] Nếu có constraint, loại các cặp bất khả thi khỏi mẫu số và giải thích cách xác định.
+- [x] So sánh số ca Pairwise với số tổ hợp vét cạn trên cùng mô hình.
+- [x] Ghi số ca thực tế, tỷ lệ giảm và các cặp còn thiếu nếu có.
+- **Bàn giao:** `pairwise_owner/run_owner_pairwise.mjs --check`, `reports/pairwise-coverage.md`, coverage/Pict verification JSON.
 - **Hoàn thành khi:** bao phủ đạt 100% các cặp hợp lệ trong mô hình đã chốt; có kết quả kiểm tra tự động. Bao phủ cặp không đồng nghĩa bao phủ mã nguồn hoặc phát hiện mọi lỗi.
 
 ### Thành viên 3 — Đạo Ngọc Thạch
@@ -95,31 +95,31 @@ Mỗi người tự viết nội dung báo cáo cho phần mình phụ trách. C
 #### K06-04: Viết test runner tự động
 
 - [ ] Thống nhất với Đức định dạng dữ liệu đầu vào và expected result.
-- [ ] Đọc bộ test được sinh và gửi dữ liệu tới ứng dụng local qua HTTP hoặc công cụ tự động hóa giao diện đã chọn.
-- [ ] Kiểm tra ca hợp lệ: phản hồi/chuyển hướng đúng và dữ liệu hiển thị hoặc được lưu đúng.
-- [ ] Kiểm tra ca không hợp lệ: lỗi đúng trường, đúng nội dung cần kiểm tra và không tạo bản ghi ngoài ý muốn.
-- [ ] Quản lý dữ liệu test, timeout và lỗi kết nối; tách lỗi môi trường khỏi lỗi chức năng.
-- [ ] Xuất kết quả từng ca gồm ID, input, expected, actual, pass/fail và thời gian chạy.
-- **Bàn giao:** `tests/runner/`, file dependency cần thiết, `tests/README.md`.
+- [x] Đọc bộ test được sinh và gửi dữ liệu tới ứng dụng local qua HTTP hoặc công cụ tự động hóa giao diện đã chọn.
+- [x] Kiểm tra ca hợp lệ: phản hồi/chuyển hướng đúng và dữ liệu hiển thị hoặc được lưu đúng.
+- [x] Kiểm tra ca không hợp lệ: lỗi đúng trường, đúng nội dung cần kiểm tra và không tạo bản ghi ngoài ý muốn.
+- [x] Quản lý dữ liệu test, timeout và lỗi kết nối; tách lỗi môi trường khỏi lỗi chức năng.
+- [x] Xuất kết quả từng ca gồm ID, input, expected, actual, pass/fail và thời gian chạy.
+- **Bàn giao:** `run_r01_k06.mjs`, `scripts/runtime.mjs`, runner trong `pairwise_owner/`, `tests/README.md`.
 - **Hoàn thành khi:** chạy toàn bộ bộ test bằng lệnh được tài liệu hóa, có báo cáo và mã thoát khác 0 khi test thất bại.
 
 #### K06-05: Thực thi, lưu bằng chứng và phân tích lỗi
 
-- [ ] Chạy bộ Pairwise, bộ validation và các ca bổ sung trên phiên bản đã cố định.
-- [ ] Lưu tổng số ca, pass/fail, thời gian chạy và log gắn với commit/cấu hình tương ứng.
-- [ ] Với ca fail, phân biệt lỗi sản phẩm, lỗi script, lỗi dữ liệu và lỗi môi trường.
-- [ ] Lập defect có bước tái hiện, expected/actual, bằng chứng và phân tích nguyên nhân nếu xác nhận được lỗi sản phẩm.
-- [ ] Nếu không phát hiện lỗi, trình bày kết quả và độ bao phủ đã đo cùng giới hạn của phạm vi.
-- **Bàn giao:** `reports/test-results.md`, `reports/defects.md`, `evidence/test-runs/`.
+- [x] Chạy bộ Pairwise, bộ validation và các ca bổ sung trên phiên bản đã cố định.
+- [x] Lưu tổng số ca, pass/fail, thời gian chạy và log gắn với commit/cấu hình tương ứng.
+- [x] Với ca fail, phân biệt lỗi sản phẩm, lỗi script, lỗi dữ liệu và lỗi môi trường.
+- [x] Lập defect có bước tái hiện, expected/actual, bằng chứng và phân tích nguyên nhân nếu xác nhận được lỗi sản phẩm.
+- [x] Nếu không phát hiện lỗi, trình bày kết quả và độ bao phủ đã đo cùng giới hạn của phạm vi.
+- **Bàn giao:** `reports/test-results.md`, `reports/defects.md`, `reports/verification/`, `output/r01-k06/runs/`.
 - **Hoàn thành khi:** mọi ca fail đều có giải thích; số liệu trong báo cáo truy được về log. Chỉ so sánh thời gian Pairwise/vét cạn khi đã thực sự đo cả hai trong điều kiện tương đương.
 
 #### K06-06: Tổng hợp báo cáo và chuẩn bị bảo vệ
 
-- [ ] Ghép các phần A–H từ nội dung từng thành viên bàn giao.
-- [ ] Kiểm tra tính thống nhất giữa mô hình, số ca, log, bảng kết quả và kết luận.
+- [x] Ghép các phần A–H từ nội dung từng thành viên bàn giao.
+- [x] Kiểm tra tính thống nhất giữa mô hình, số ca, log, bảng kết quả và kết luận.
 - [ ] Chuẩn bị slide, kịch bản demo và bằng chứng dự phòng.
-- [ ] Tổng hợp bảng đóng góp thực tế dựa trên Issues, PR và commit.
-- **Bàn giao:** báo cáo cuối kỳ, slide và kịch bản trong `docs/`.
+- [x] Tổng hợp bảng đóng góp thực tế dựa trên Issues, PR và commit.
+- **Bàn giao:** `docs/bao-cao-tong-ket.md`, `docs/kich-ban-demo.md`, `docs/lich-su-cong-viec.md`.
 - **Hoàn thành khi:** cả nhóm review nội dung, chạy thử demo và mỗi người giải thích được phần mình làm.
 
 ## 4. Thứ tự thực hiện và review chéo
@@ -174,4 +174,20 @@ Không cần chia số commit bằng nhau. Đánh giá đóng góp dựa trên c
 | K06-05 | Đạo Ngọc Thạch | [#8](https://github.com/1liusang/spring-petclinic/issues/8) |
 | K06-06 | Đạo Ngọc Thạch | [#9](https://github.com/1liusang/spring-petclinic/issues/9) |
 
-Người phụ trách được ghi theo tên trong nội dung Issue. GitHub Assignee của các thành viên sẽ được gán khi có username tương ứng.
+Người phụ trách được ghi theo tên trong nội dung Issue. Username: Sang `1liusang`, Đức `2314299-debug`, Thạch `2314387-cmyk`. Thạch cần chấp nhận lời mời trước khi có thể gán Assignee nếu GitHub vẫn báo pending.
+
+## 9. Trạng thái thực hiện
+
+Theo yêu cầu chủ repo, các cập nhật được push trực tiếp lên `main`; PR #10–#13 đã đóng. Bảng này chỉ đánh dấu phần có bằng chứng, không xác nhận thay việc review hoặc trao đổi giữa thành viên.
+
+- **#1:** Tài liệu và đối chiếu source đã có; còn review của thành viên khác theo tiêu chí nhiệm vụ.
+- **#2:** Đã build/test/run trên clone sạch cùng máy. Chưa có xác nhận từ thành viên khác trên máy của họ.
+- **#3:** Ba luồng có HTML/JSON mới và PASS. Chưa có ảnh PNG mới vì Computer Use không hỗ trợ URL policy cho Cốc Cốc hiện tại; ảnh tháng 10 không dùng thay cho run mới.
+- **#4:** Đủ lý thuyết, phạm vi, lớp dữ liệu, precondition và oracle; kết luận giới hạn theo source của phiên bản đã pin.
+- **#5:** Mô hình, dữ liệu và runner đã tích hợp/tái sinh được. Chưa có xác nhận bàn giao/review trực tiếp từ thành viên phụ trách.
+- **#6:** Mô hình hiện tại không có constraint liên trường; mẫu số gồm toàn bộ 90 cặp. Đã đạt 90/90, giảm số ca 94,24%; không suy ra tăng tốc thời gian.
+- **#7:** Định dạng input/expected/actual và runner đã được kiểm tra kỹ thuật. Chưa có xác nhận trao đổi/chốt trực tiếp với Đức; không đánh dấu thay thành viên.
+- **#8:** 27/27 HTTP đạt, không có ca fail hoặc defect sản phẩm được xác nhận. Hai mục xử lý ca fail/lập defect áp dụng có điều kiện: không phát sinh trong run này. Báo cáo phân loại rõ các lỗi công cụ/tài liệu đã khắc phục và giới hạn.
+- **#9:** Báo cáo Markdown A–H, nguồn nội dung slide, kịch bản và bảng lịch sử đã có. Word/PDF/PowerPoint cũ chưa cập nhật thành hồ sơ cuối kỳ; còn review, tập dượt và đánh giá chéo thực tế.
+
+Xem [báo cáo kỹ thuật A–H](docs/bao-cao-tong-ket.md), [kết quả](reports/test-results.md), [lịch sử công việc](docs/lich-su-cong-viec.md). Checklist ở phần trước khi nộp vẫn cần nhóm xác nhận đầy đủ.

@@ -18,3 +18,9 @@ git status --short
 Sau đó thực hiện [setup](setup.md). `PETCLINIC_APP_COMMIT` là khai báo của người chạy về checkout đã build ứng dụng; JSON lưu riêng trường này và commit của harness, không suy diễn rằng URL bất kỳ đang chạy đúng phiên bản. Thực nghiệm nhóm dùng ứng dụng từ chính checkout sạch trên cổng riêng và lưu log khởi động.
 
 Nếu thay mã Java/schema/quy tắc nghiệp vụ, phải chốt commit mới, chạy lại test và cập nhật kết luận. Các bằng chứng tháng 10/2026 trong repo là dữ liệu lịch sử, không chứng minh các phiên bản mới đã đạt.
+
+## Snapshot kiểm thử hiện hành
+
+Commit đã chạy: `dc1ea45d8e5eedfbb3a3c9e7b7bcb7d1a38b567e`, run `mwymg1e7c11f2a`. [Kết quả](../reports/test-results.md) và [manifest](../reports/verification/evidence-manifest.json) chứa bằng chứng mới; source Java và build config không đổi so với mốc ứng dụng đã nêu trên.
+
+Maven Wrapper hiện pin 3.9.16. Khi công bố bundle hash, giữ nguyên bytes của snapshot và chuẩn hóa PICT/TSV về LF theo `.gitattributes`; kiểm tra trên clone sạch để phát hiện khác biệt định dạng do Git.
