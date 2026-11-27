@@ -1,18 +1,14 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { base, runId, metadata, request, evidenceDirectory } from '../scripts/runtime.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const output = path.join(here, 'evidence');
-const base = process.env.PETCLINIC_URL ?? 'http://localhost:8080';
-const tag = Date.now().toString(36);
-const result = { ranAt: new Date().toISOString(), base, cases: [], status: 'FAIL' };
+const output = evidenceDirectory('flows', 'pairwise_owner/evidence');
+const tag = runId;
+const result = { ...metadata(), cases: [], status: 'FAIL' };
 await mkdir(output, { recursive: true });
 function assert(ok, message) { if (!ok) throw new Error(message); }
-async function request(route, options = {}) {
-  const response = await fetch(new URL(route, base), { redirect: 'manual', ...options });
-  return { response, body: await response.text() };
-}
 function post(route, data) {
   return request(route, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(data) });
@@ -48,18 +44,25 @@ try {
     /class="form-group has-error"[\s\S]{0,200}<label for="name"/.test(duplicate.body) &&
     duplicate.body.includes('is already in use') && petCount === 1;
   result.cases.push({ id: 'TC05', description: 'Duplicate pet name', status: duplicatePassed ? 'PASS' : 'FAIL',
-    httpStatus: duplicate.response.status, ownerId, petId, petCount, evidence: 'TC05.html' });
+    expected: { httpStatus: 200, validationField: 'name', petCount: 1 },
+    actual: { httpStatus: duplicate.response.status, petCount },
+    httpStatus: duplicate.response.status, ownerId, petId, petCount, evidence: 'TC05.html', afterEvidence: 'TC05_after.html' });
   await writeFile(path.join(output, 'TC05.html'), duplicate.body);
+  await writeFile(path.join(output, 'TC05_after.html'), afterDuplicate.body);
 
   const description = `Same day visit ${tag}`;
   const sameDay = await post(`/owners/${ownerId}/pets/${petId}/visits/new`,
     { date, description, petId: String(petId) });
   const afterVisit = await request(ownerPath);
-  const visitPassed = sameDay.response.status === 200 && sameDay.body.includes('has-error') &&
+  const visitPassed = sameDay.response.status === 200 &&
+    /class="form-group has-error"[\s\S]{0,200}<label for="date"/.test(sameDay.body) &&
     !afterVisit.body.includes(description);
   result.cases.push({ id: 'TC07', description: 'Visit date today', status: visitPassed ? 'PASS' : 'FAIL',
-    httpStatus: sameDay.response.status, date, ownerId, petId, evidence: 'TC07.html' });
+    expected: { httpStatus: 200, validationField: 'date', persisted: false },
+    actual: { httpStatus: sameDay.response.status, persisted: afterVisit.body.includes(description) },
+    httpStatus: sameDay.response.status, date, ownerId, petId, evidence: 'TC07.html', afterEvidence: 'TC07_after.html' });
   await writeFile(path.join(output, 'TC07.html'), sameDay.body);
+  await writeFile(path.join(output, 'TC07_after.html'), afterVisit.body);
   result.status = result.cases.every(x => x.status === 'PASS') ? 'PASS' : 'FAIL';
 } catch (error) {
   result.error = String(error);

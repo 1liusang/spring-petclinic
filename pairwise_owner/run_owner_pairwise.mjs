@@ -1,10 +1,10 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { base, runId, metadata, request, evidenceDirectory } from '../scripts/runtime.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const base = process.env.PETCLINIC_URL ?? 'http://localhost:8080';
-const output = path.join(here, 'evidence');
+const output = evidenceDirectory('owner', 'pairwise_owner/evidence');
 const fields = ['firstName', 'lastName', 'address', 'city', 'telephone'];
 const classes = {
   firstName: ['short', 'unicode', 'max30'],
@@ -31,7 +31,7 @@ for (const field of fields) {
     `PICT model classes for ${field} do not match test script`);
 }
 
-const lines = (await readFile(path.join(here, 'owner_cases.tsv'), 'utf8'))
+const lines = (await readFile(process.env.PICT_CASES_FILE ?? path.join(here, 'owner_cases.tsv'), 'utf8'))
   .replace(/^\uFEFF/, '').split(/\r\n|\n|\r/).map(x => x.trim()).filter(Boolean);
 assert(lines.shift() === fields.join('\t'), 'PICT output header does not match model');
 const rows = lines.map((line, i) => {
@@ -74,8 +74,7 @@ await writeFile(path.join(output, 'coverage.json'), JSON.stringify(coverage, nul
 console.log(`PICT: ${rows.length} cases; ${covered.size}/${totalPairs} pairs covered`);
 if (process.argv.includes('--check')) process.exit(0);
 
-const runId = Date.now().toString(36);
-const result = { ranAt: new Date().toISOString(), base, model: 'owner_model.pict',
+const result = { ...metadata(), model: 'owner_model.pict',
   casesFile: 'owner_cases.tsv', coverage, positive: [], negative: [] };
 function dataFor(row, index) {
   const tag = `PW${runId}${index.toString().padStart(2, '0')}`;
@@ -93,10 +92,6 @@ function dataFor(row, index) {
   return data;
 }
 
-async function request(route, options = {}) {
-  const response = await fetch(new URL(route, base), { redirect: 'manual', ...options });
-  return { response, body: await response.text() };
-}
 async function postOwner(data) {
   return request('/owners/new', { method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -107,7 +102,10 @@ function locationPath(response) {
   return location ? new URL(location, base).pathname.replace(/;jsessionid=[^/]+/i, '') : '';
 }
 async function runCase(label, row, data, negative = false, field = '') {
-  const entry = { id: label, classes: row, input: data, status: 'FAIL' };
+  const started = performance.now();
+  const entry = { id: label, classes: row, input: data, status: 'FAIL',
+    expected: negative ? { httpStatus: 200, validationField: field, persisted: false }
+      : { httpStatus: 302, persisted: true, fields: data } };
   try {
     const posted = await postOwner(data);
     const location = locationPath(posted.response);
@@ -121,6 +119,7 @@ async function runCase(label, row, data, negative = false, field = '') {
       assert(search.response.status === 200 && search.body.includes('has not been found'),
         `Rejected owner ${data.lastName} appeared in search`);
       entry.validationField = field;
+      entry.actual = { validationField: field, persisted: false, httpStatus: posted.response.status };
       entry.evidence = `${label}.html`;
       entry.searchEvidence = `${label}_search.html`;
       await writeFile(path.join(output, entry.evidence), posted.body);
@@ -132,6 +131,7 @@ async function runCase(label, row, data, negative = false, field = '') {
       assert(page.response.status === 200 &&
         fields.every(f => page.body.includes(data[f])), `Saved owner data missing on ${location}`);
       entry.ownerId = Number(location.match(/\d+$/)[0]);
+      entry.actual = { httpStatus: posted.response.status, persisted: true, fieldsMatch: true };
       entry.evidence = `${label}.html`;
       await writeFile(path.join(output, entry.evidence), page.body);
     }
@@ -139,6 +139,7 @@ async function runCase(label, row, data, negative = false, field = '') {
   } catch (error) {
     entry.error = String(error);
   }
+  entry.durationMs = Math.round((performance.now() - started) * 100) / 100;
   (negative ? result.negative : result.positive).push(entry);
   console.log(`${label}: ${entry.status}${entry.error ? ` ${entry.error}` : ''}`);
 }

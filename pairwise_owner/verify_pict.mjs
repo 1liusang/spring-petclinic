@@ -3,15 +3,16 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { metadata, evidenceDirectory } from '../scripts/runtime.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.dirname(here);
 const executable = process.env.PICT_PATH ?? path.join(root, '.tmp', 'pict.exe');
 const model = path.join(here, 'owner_model.pict');
 const expectedFile = path.join(here, 'owner_cases.tsv');
-const outputFile = path.join(here, 'evidence', 'pict_verification.json');
+const outputFile = path.join(evidenceDirectory('owner', 'pairwise_owner/evidence'), 'pict_verification.json');
 const normalized = text => text.replace(/^\uFEFF/, '').replace(/\r\n|\r/g, '\n').trimEnd();
-const result = { ranAt: new Date().toISOString(), executable,
+const result = { ...metadata(), executable,
   command: 'pict owner_model.pict /o:2 /r:20261017', status: 'FAIL' };
 
 try {
@@ -22,7 +23,7 @@ try {
     throw new Error('PICT binary does not match the release used for this project');
   }
   const run = spawnSync(executable, [model, '/o:2', '/r:20261017'], {
-    cwd: root, encoding: 'utf8', windowsHide: true,
+    cwd: root, encoding: 'utf8', windowsHide: true, timeout: 30000,
   });
   if (run.error) throw run.error;
   if (run.status !== 0) throw new Error(`PICT exited ${run.status}: ${run.stderr}`);
