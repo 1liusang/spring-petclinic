@@ -1,5 +1,11 @@
 # Kết quả kiểm thử K06 Pairwise trên Spring PetClinic
 
+**Kết quả hiện hành:** xem [báo cáo kết quả tháng 11](../reports/test-results.md), [coverage](../reports/pairwise-coverage.md) và [báo cáo kỹ thuật A–H](../docs/bao-cao-tong-ket.md). Snapshot mới có run ID và commit riêng; các đường dẫn trong phần dưới là hồ sơ lịch sử.
+
+## Lưu trữ kết quả tháng 10 năm 2026
+
+Phần bên dưới giữ nguyên để đối chiếu quá trình thực hiện. Không dùng số ID, đường dẫn workspace cũ, thời gian hoặc ảnh cũ để kết luận cho run mới.
+
 ## Phạm vi và dữ liệu
 
 Nhóm kiểm thử form thêm chủ nuôi `/owners/new` trên mã nguồn Spring PetClinic commit `500158f732419217507c7656904b8e6aa1bcc0d6`. Mô hình PICT nằm ở [owner_model.pict](owner_model.pict), đầu ra PICT ở [owner_cases.tsv](owner_cases.tsv). Mỗi trường có ba lớp dữ liệu hợp lệ:
