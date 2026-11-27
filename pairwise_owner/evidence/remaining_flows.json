@@ -1,0 +1,27 @@
+{
+  "ranAt": "2026-10-17T11:49:54.334Z",
+  "base": "http://localhost:8080",
+  "cases": [
+    {
+      "id": "TC05",
+      "description": "Duplicate pet name",
+      "status": "PASS",
+      "httpStatus": 200,
+      "ownerId": 42,
+      "petId": 17,
+      "petCount": 1,
+      "evidence": "TC05.html"
+    },
+    {
+      "id": "TC07",
+      "description": "Visit date today",
+      "status": "PASS",
+      "httpStatus": 200,
+      "date": "2026-10-17",
+      "ownerId": 42,
+      "petId": 17,
+      "evidence": "TC07.html"
+    }
+  ],
+  "status": "PASS"
+}

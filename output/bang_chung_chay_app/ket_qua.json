@@ -1,0 +1,39 @@
+{
+  "ranAt": "2026-10-17T11:49:53.583Z",
+  "commit": "500158f732419217507c7656904b8e6aa1bcc0d6",
+  "base": "http://localhost:8080",
+  "cases": [
+    {
+      "flow": "Thêm chủ nuôi",
+      "status": "PASS",
+      "ownerId": 27,
+      "path": "/owners/27",
+      "evidence": "02_chu_nuoi.html"
+    },
+    {
+      "flow": "Tìm chủ nuôi",
+      "status": "PASS",
+      "query": "KTPMmvcc3w32",
+      "ownerId": 27
+    },
+    {
+      "flow": "Thêm thú nuôi",
+      "status": "PASS",
+      "petId": 16,
+      "path": "/owners/27",
+      "evidence": "03_thu_nuoi.html"
+    },
+    {
+      "flow": "Ghi nhận lượt khám",
+      "status": "PASS",
+      "visitDate": "2026-10-18",
+      "path": "/owners/27",
+      "evidence": "04_luot_kham.html"
+    }
+  ],
+  "status": "PASS",
+  "ownerId": 27,
+  "petId": 16,
+  "ownerName": "An KTPMmvcc3w32",
+  "petName": "Milomvcc3w32"
+}

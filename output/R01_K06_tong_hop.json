@@ -1,0 +1,32 @@
+{
+  "ranAt": "2026-10-17T11:49:53.461Z",
+  "base": "http://localhost:8080",
+  "jobs": [
+    {
+      "name": "Ba luồng nghiệp vụ",
+      "file": "demo_3_luong.mjs",
+      "exitCode": 0
+    },
+    {
+      "name": "Pairwise và dữ liệu sai",
+      "file": "pairwise_owner/run_owner_pairwise.mjs",
+      "exitCode": 0
+    },
+    {
+      "name": "Tên thú nuôi trùng và ngày khám hôm nay",
+      "file": "pairwise_owner/run_remaining_flows.mjs",
+      "exitCode": 0
+    }
+  ],
+  "status": "PASS",
+  "commit": "500158f732419217507c7656904b8e6aa1bcc0d6",
+  "coverage": {
+    "generatedCases": 14,
+    "exhaustiveCases": 243,
+    "totalPairs": 90,
+    "coveredPairs": 90,
+    "missingPairs": []
+  },
+  "total": 27,
+  "passed": 27
+}
