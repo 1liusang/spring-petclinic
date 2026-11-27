@@ -1,0 +1,15 @@
+firstName	lastName	address	city	telephone
+max30	short	short	max80	digitsB
+short	max30	short	unicode	digitsC
+unicode	unicode	max255	short	digitsC
+unicode	max30	short	short	digitsA
+short	short	max255	unicode	digitsA
+unicode	unicode	unicode	unicode	digitsB
+unicode	short	unicode	max80	digitsA
+short	max30	max255	max80	digitsB
+max30	unicode	max255	max80	digitsC
+max30	max30	unicode	short	digitsA
+max30	short	unicode	unicode	digitsC
+short	unicode	unicode	short	digitsA
+short	unicode	short	short	digitsB
+max30	short	max255	short	digitsA
