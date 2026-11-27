@@ -10,5 +10,5 @@
 /reports/verification/** -text
 /output/R01_K06_tong_hop.json -text
 /output/R01_K06_ket_qua_ca.csv -text
-/pairwise_owner/owner_model.pict -text
-/pairwise_owner/owner_cases.tsv -text
+/pairwise_owner/owner_model.pict text eol=lf
+/pairwise_owner/owner_cases.tsv text eol=lf

@@ -229,13 +229,13 @@
     },
     {
       "path": "pairwise_owner/owner_cases.tsv",
-      "bytes": 546,
-      "sha256": "5c5dfbcbe22fe86d5c6fc4ba8346a029d73661b8720891b06e169edf02c444eb"
+      "bytes": 531,
+      "sha256": "e320d72feccc7e5760d28cd464f01df2ed697eb6f7433bb084c4f9a2adc48bb1"
     },
     {
       "path": "pairwise_owner/owner_model.pict",
-      "bytes": 314,
-      "sha256": "bc44fd68cbee92453a6a87136400ed5bf14eedbc9b7e9ad129cede4423584043"
+      "bytes": 307,
+      "sha256": "026a0c9bf506b150557170048ea373d746d5770b614941977e23ad86c8a1a274"
     },
     {
       "path": "reports/verification/harness-tests.log",
