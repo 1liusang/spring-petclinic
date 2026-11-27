@@ -1,5 +1,11 @@
 # Spring PetClinic Sample Application [![Build Status](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml/badge.svg)](https://github.com/spring-projects/spring-petclinic/actions/workflows/maven-build.yml)[![Build Status](https://github.com/spring-projects/spring-petclinic/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/spring-projects/spring-petclinic/actions/workflows/gradle-build.yml)
 
+## Bài nhóm R01 + K06
+
+Phân công: [9 task](PHAN_CONG_R01_K06.md). Tài liệu: [setup và reset dữ liệu](docs/setup.md), [phân tích hệ thống](docs/system-analysis.md), [kiến trúc](docs/architecture.md), [phiên bản](docs/version.md).
+
+Từ gốc repo: mở ứng dụng theo setup, chạy `node pairwise_owner/run_owner_pairwise.mjs --check` để kiểm tra bao phủ; chạy `node run_r01_k06.mjs` để thực thi bài HTTP. Cần Node.js 18+, xem setup cho cấu hình môi trường và PICT.
+
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/spring-projects/spring-petclinic) [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=7517918)
 
 ## Understanding the Spring Petclinic application with a few diagrams

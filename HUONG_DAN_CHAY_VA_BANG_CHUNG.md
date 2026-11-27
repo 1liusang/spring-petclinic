@@ -1,4 +1,14 @@
-# Hướng dẫn chạy và bằng chứng báo cáo giữa kỳ R01 K06
+# Hướng dẫn chạy R01/K06
+
+Hướng dẫn hiện hành: [cài đặt từ gốc repo](docs/setup.md), [phiên bản](docs/version.md), [phân tích hệ thống](docs/system-analysis.md), [kiến trúc](docs/architecture.md). Mọi script đã nằm tại gốc repo `spring-petclinic`; không chạy từ thư mục cha `KTPM`.
+
+Sau khi ứng dụng sẵn sàng, chạy `node run_r01_k06.mjs` tại gốc repo. Đặt `PETCLINIC_URL` theo cổng ứng dụng và `PETCLINIC_APP_COMMIT` theo checkout đã build. Xem chi tiết trong tài liệu setup.
+
+---
+
+## Lưu trữ: hướng dẫn và bằng chứng giữa kỳ tháng 10/2026
+
+Phần bên dưới mô tả bố cục workspace và kết quả lịch sử. Các đường dẫn `KTPM`, số ID, ảnh và commit ở đây không phải chỉ dẫn chạy cho bố cục repo hiện tại; chúng không chứng minh kết quả của phiên bản mới.
 
 ## Phiên bản và môi trường đã kiểm tra
 

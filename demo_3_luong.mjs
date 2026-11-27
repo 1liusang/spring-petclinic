@@ -1,17 +1,12 @@
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { base, runId, metadata, request, evidenceDirectory } from './scripts/runtime.mjs';
 
-const base = process.env.PETCLINIC_URL ?? 'http://localhost:8080';
-const evidenceDir = path.resolve('output', 'bang_chung_chay_app');
+const evidenceDir = evidenceDirectory('demo', 'output/bang_chung_chay_app');
 await mkdir(evidenceDir, { recursive: true });
 
 function check(condition, message) {
   if (!condition) throw new Error(message);
-}
-
-async function request(route, options = {}) {
-  const response = await fetch(new URL(route, base), { redirect: 'manual', ...options });
-  return { response, body: await response.text() };
 }
 
 async function post(route, values) {
@@ -32,14 +27,13 @@ function redirectPath(response) {
   return new URL(location, base).pathname.replace(/;jsessionid=[^/]+/i, '');
 }
 
-const runId = Date.now().toString(36);
 const lastName = `KTPM${runId}`;
 const petName = `Milo${runId}`;
 const birth = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
 const birthDate = `${birth.getFullYear()}-${String(birth.getMonth() + 1).padStart(2, '0')}-${String(birth.getDate()).padStart(2, '0')}`;
 const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
 const visitDate = `${tomorrow.getFullYear()}-${String(tomorrow.getMonth() + 1).padStart(2, '0')}-${String(tomorrow.getDate()).padStart(2, '0')}`;
-const result = { ranAt: new Date().toISOString(), commit: '500158f732419217507c7656904b8e6aa1bcc0d6', base, cases: [] };
+const result = { ...metadata(), cases: [] };
 
 try {
   const home = await request('/');
