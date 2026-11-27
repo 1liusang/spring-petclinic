@@ -103,8 +103,11 @@ function locationPath(response) {
 }
 async function runCase(label, row, data, negative = false, field = '') {
   const started = performance.now();
+  const message = !negative ? null : field === 'telephone' ? 'Telephone must be a 10-digit number'
+    : data[field] === '' ? 'must not be blank'
+      : `size must be between 0 and ${{ firstName: 30, lastName: 30, address: 255, city: 80 }[field]}`;
   const entry = { id: label, classes: row, input: data, status: 'FAIL',
-    expected: negative ? { httpStatus: 200, validationField: field, persisted: false }
+    expected: negative ? { httpStatus: 200, validationField: field, message, persisted: false }
       : { httpStatus: 302, persisted: true, fields: data } };
   try {
     const posted = await postOwner(data);
@@ -115,11 +118,12 @@ async function runCase(label, row, data, negative = false, field = '') {
       assert(posted.response.status === 200, `Expected form response, got ${posted.response.status}`);
       assert(new RegExp(`class="form-group has-error"[\\s\\S]{0,200}<label for="${field}"`).test(posted.body),
         `Validation error absent for ${field}`);
+      assert(posted.body.includes(message), `Validation message absent for ${field}: ${message}`);
       const search = await request(`/owners?lastName=${encodeURIComponent(data.lastName)}`);
       assert(search.response.status === 200 && search.body.includes('has not been found'),
         `Rejected owner ${data.lastName} appeared in search`);
       entry.validationField = field;
-      entry.actual = { validationField: field, persisted: false, httpStatus: posted.response.status };
+      entry.actual = { validationField: field, message, persisted: false, httpStatus: posted.response.status };
       entry.evidence = `${label}.html`;
       entry.searchEvidence = `${label}_search.html`;
       await writeFile(path.join(output, entry.evidence), posted.body);

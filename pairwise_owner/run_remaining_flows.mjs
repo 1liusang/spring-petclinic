@@ -37,13 +37,16 @@ try {
   assert(visitLink, 'Visit link missing');
   const petId = Number(visitLink[1]);
 
-  const duplicate = await post(petRoute, { name: petName, birthDate, type: 'cat' });
+  let stepStarted = performance.now();
+  const duplicateInput = { name: petName, birthDate, type: 'cat' };
+  const duplicate = await post(petRoute, duplicateInput);
   const afterDuplicate = await request(ownerPath);
   const petCount = afterDuplicate.body.split(`<dd>${petName}</dd>`).length - 1;
   const duplicatePassed = duplicate.response.status === 200 &&
     /class="form-group has-error"[\s\S]{0,200}<label for="name"/.test(duplicate.body) &&
     duplicate.body.includes('is already in use') && petCount === 1;
   result.cases.push({ id: 'TC05', description: 'Duplicate pet name', status: duplicatePassed ? 'PASS' : 'FAIL',
+    input: duplicateInput, durationMs: Math.round(performance.now() - stepStarted),
     expected: { httpStatus: 200, validationField: 'name', petCount: 1 },
     actual: { httpStatus: duplicate.response.status, petCount },
     httpStatus: duplicate.response.status, ownerId, petId, petCount, evidence: 'TC05.html', afterEvidence: 'TC05_after.html' });
@@ -51,13 +54,16 @@ try {
   await writeFile(path.join(output, 'TC05_after.html'), afterDuplicate.body);
 
   const description = `Same day visit ${tag}`;
+  stepStarted = performance.now();
+  const visitInput = { date, description, petId: String(petId) };
   const sameDay = await post(`/owners/${ownerId}/pets/${petId}/visits/new`,
-    { date, description, petId: String(petId) });
+    visitInput);
   const afterVisit = await request(ownerPath);
   const visitPassed = sameDay.response.status === 200 &&
     /class="form-group has-error"[\s\S]{0,200}<label for="date"/.test(sameDay.body) &&
     !afterVisit.body.includes(description);
   result.cases.push({ id: 'TC07', description: 'Visit date today', status: visitPassed ? 'PASS' : 'FAIL',
+    input: visitInput, durationMs: Math.round(performance.now() - stepStarted),
     expected: { httpStatus: 200, validationField: 'date', persisted: false },
     actual: { httpStatus: sameDay.response.status, persisted: afterVisit.body.includes(description) },
     httpStatus: sameDay.response.status, date, ownerId, petId, evidence: 'TC07.html', afterEvidence: 'TC07_after.html' });
