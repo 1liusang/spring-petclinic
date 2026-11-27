@@ -1,0 +1,9 @@
+{
+  "ranAt": "2026-10-17T12:05:06.908Z",
+  "executable": "C:\\Users\\Administrator\\Documents\\KTPM\\.tmp\\pict.exe",
+  "command": "pict owner_model.pict /o:2 /r:20261017",
+  "status": "PASS",
+  "sha256": "80aba862739cf18b4faa13d408163324d188a1c4efccdd977d9c5ba3f8950bbd",
+  "generatedCases": 14,
+  "matchesSavedCases": true
+}
