@@ -1,0 +1,178 @@
+{
+  "commit": "6cb82066a3940cc860ef3458c804185aadfbbe3a",
+  "source": "clean clone from GitHub main",
+  "command": "mvnw.cmd -B test",
+  "totals": {
+    "tests": 79,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 2
+  },
+  "suites": [
+    {
+      "suite": "org.springframework.samples.petclinic.model.ValidatorTests",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.932,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.MySqlIntegrationTests",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 2,
+      "seconds": 0.001,
+      "skippedCases": [
+        "findAll",
+        "ownerDetails"
+      ]
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.owner.OwnerControllerTests",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 4.9,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.owner.OwnerTests",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.01,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.owner.PetControllerTests",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 1.082,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.owner.PetTypeFormatterTests",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.03,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.owner.PetValidatorTests",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.021,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.owner.VisitControllerTests",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.437,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.PetClinicConcurrencyTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 6.476,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.PetClinicIntegrationTests",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 1.183,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.PostgresIntegrationTests",
+      "tests": 0,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.024,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.service.ClinicServiceTests",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.534,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.system.CrashControllerIntegrationTests",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.596,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.system.CrashControllerTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.006,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.system.I18nPropertiesSyncTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.021,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.system.WelcomeControllerTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.213,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.vet.VetControllerTests",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.45,
+      "skippedCases": []
+    },
+    {
+      "suite": "org.springframework.samples.petclinic.vet.VetTests",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.012,
+      "skippedCases": []
+    }
+  ]
+}

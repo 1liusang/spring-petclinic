@@ -29,3 +29,14 @@ Biến môi trường:
 Harness thoát 0 khi đạt; khác 0 khi ca fail, thiếu ca, thiếu cặp hoặc lỗi môi trường. `--check` chỉ xác minh mô hình và bao phủ, không phải chạy HTTP hay sinh lại bằng PICT.
 
 Kiểm thử harness có chủ đích: loại bớt hàng TSV phải báo thiếu cặp; mức không có trong mô hình phải bị từ chối; HTTP 503 phải ghi đè bản PASS cũ thành FAIL; request treo phải dừng theo timeout. Các kiểm tra này chạy từ working directory khác gốc repo để bắt lỗi đường dẫn.
+
+## Kiểm tra snapshot đã công bố
+
+```powershell
+node scripts/verify-evidence.mjs
+node --test tests/harness.test.mjs tests/evidence.test.mjs
+```
+
+Verifier đối chiếu 27 mã ca, metadata server/run, nội dung HTML, JSON/CSV, coverage tính lại và SHA-256 toàn bộ bundle. Test bổ sung cố ý xóa HTML, sửa dữ liệu đã lưu, làm trùng mã CSV, sửa log và bỏ file khỏi manifest; verifier phải từ chối.
+
+Để thu bộ kết quả mới có cả bước xác minh PICT, dùng `node run_r01_k06.mjs --verify-pict` sau khi đặt `PICT_PATH`. Verifier hiện kiểm tra **snapshot đã công bố** theo manifest; một run mới ghi đè JSON/CSV gần nhất chưa cập nhật manifest sẽ bị báo không khớp. Không sửa manifest cũ để làm nó trông như đã xác minh run mới. Hãy lưu bundle/manifest mới có chủ đích khi công bố kết quả tiếp theo.

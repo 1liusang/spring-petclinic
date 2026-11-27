@@ -1,0 +1,44 @@
+{
+  "runId": "mwym200d6013c7",
+  "ranAt": "2026-11-27T06:39:00.572Z",
+  "commit": "6cb82066a3940cc860ef3458c804185aadfbbe3a",
+  "dirty": false,
+  "applicationCommit": "6cb82066a3940cc860ef3458c804185aadfbbe3a",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "base": "http://localhost:18087",
+  "cases": [
+    {
+      "flow": "Thêm chủ nuôi",
+      "status": "PASS",
+      "ownerId": 11,
+      "path": "/owners/11",
+      "evidence": "02_chu_nuoi.html"
+    },
+    {
+      "flow": "Tìm chủ nuôi",
+      "status": "PASS",
+      "query": "KTPMmwym200d6013c7",
+      "ownerId": 11
+    },
+    {
+      "flow": "Thêm thú nuôi",
+      "status": "PASS",
+      "petId": 14,
+      "path": "/owners/11",
+      "evidence": "03_thu_nuoi.html"
+    },
+    {
+      "flow": "Ghi nhận lượt khám",
+      "status": "PASS",
+      "visitDate": "2026-11-27",
+      "path": "/owners/11",
+      "evidence": "04_luot_kham.html"
+    }
+  ],
+  "status": "PASS",
+  "ownerId": 11,
+  "petId": 14,
+  "ownerName": "An KTPMmwym200d6013c7",
+  "petName": "Milomwym200d6013c7"
+}

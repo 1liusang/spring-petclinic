@@ -4,3 +4,11 @@
 
 /gradlew        text eol=lf
 *.bat           text eol=crlf
+
+# Preserve verification snapshots byte-for-byte for SHA-256 manifests.
+/output/r01-k06/runs/** -text
+/reports/verification/** -text
+/output/R01_K06_tong_hop.json -text
+/output/R01_K06_ket_qua_ca.csv -text
+/pairwise_owner/owner_model.pict -text
+/pairwise_owner/owner_cases.tsv -text

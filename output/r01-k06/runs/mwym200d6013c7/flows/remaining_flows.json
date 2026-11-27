@@ -1,0 +1,53 @@
+{
+  "runId": "mwym200d6013c7",
+  "ranAt": "2026-11-27T06:39:02.079Z",
+  "commit": "6cb82066a3940cc860ef3458c804185aadfbbe3a",
+  "dirty": false,
+  "applicationCommit": "6cb82066a3940cc860ef3458c804185aadfbbe3a",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "base": "http://localhost:18087",
+  "cases": [
+    {
+      "id": "TC05",
+      "description": "Duplicate pet name",
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "name",
+        "petCount": 1
+      },
+      "actual": {
+        "httpStatus": 200,
+        "petCount": 1
+      },
+      "httpStatus": 200,
+      "ownerId": 26,
+      "petId": 15,
+      "petCount": 1,
+      "evidence": "TC05.html",
+      "afterEvidence": "TC05_after.html"
+    },
+    {
+      "id": "TC07",
+      "description": "Visit date today",
+      "status": "PASS",
+      "expected": {
+        "httpStatus": 200,
+        "validationField": "date",
+        "persisted": false
+      },
+      "actual": {
+        "httpStatus": 200,
+        "persisted": false
+      },
+      "httpStatus": 200,
+      "date": "2026-11-26",
+      "ownerId": 26,
+      "petId": 15,
+      "evidence": "TC07.html",
+      "afterEvidence": "TC07_after.html"
+    }
+  ],
+  "status": "PASS"
+}
