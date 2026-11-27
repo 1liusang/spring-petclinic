@@ -1,0 +1,7 @@
+# Owner creation form (/owners/new), valid input classes only.
+# Invalid values are tested separately so one rejected field cannot mask another.
+firstName: short, unicode, max30
+lastName: short, unicode, max30
+address: short, unicode, max255
+city: short, unicode, max80
+telephone: digitsA, digitsB, digitsC
